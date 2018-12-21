@@ -1,0 +1,10 @@
+Ice Home: E:\workspace\DTNVS3000\meida\packages\zeroc.ice.v140.3.7.0\build\native\..\..
+Ice Tools Path: E:\workspace\DTNVS3000\meida\packages\zeroc.ice.v140.3.7.0\build\native\..\..\tools
+Output Dir: E:\workspace\DTNVS3000\meida\media\generated
+Header Output Dir:
+Include Directories: E:\workspace\DTNVS3000\meida\packages\zeroc.ice.v140.3.7.0\build\native\..\..\slice
+%(IceBuilderIncludeDirectories)
+Additional Options:
+Base Directory For Generated Include:
+Header Ext: h
+Source Ext: cpp

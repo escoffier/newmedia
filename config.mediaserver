@@ -1,0 +1,34 @@
+#
+# The server creates one single object adapter with the name
+# "Hello". The following line sets the endpoints for this
+# adapter.
+#
+Stream.Endpoints=tcp -h 192.168.21.197 -p 10003
+
+#
+# Warn about connection exceptions
+#
+Ice.Warn.Connections=1
+
+#
+# Network Tracing
+#
+# 0 = no network tracing
+# 1 = trace connection establishment and closure
+# 2 = like 1, but more detailed
+# 3 = like 2, but also trace data transfer
+#
+Ice.Trace.Network=2
+
+#
+# Protocol Tracing
+#
+# 0 = no protocol tracing
+# 1 = trace protocol messages
+#
+#Ice.Trace.Protocol=1
+
+#Active Connection Management (ACM)
+Ice.ACM.Close=1      # CloseOnIdle
+Ice.ACM.Heartbeat=3 # HeartbeatAlways
+Ice.ACM.Timeout=3600
