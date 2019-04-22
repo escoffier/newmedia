@@ -1,0 +1,46 @@
+<!--
+ **********************************************************************
+
+ Copyright (c) 2003-2016 ZeroC, Inc. All rights reserved.
+
+ **********************************************************************
+-->
+
+<icegrid>
+  <application name="DTMedia">
+
+    <server-template id="MediaServer">
+      <parameter name="host"/>
+      <parameter name="index"/>
+	  <server id="Media-${index}-${host}" exe="./media" activation="on-demand"  allocatable="true">
+        <adapter name="Stream" endpoints="tcp -h ${host}" replica-group="ReplicatedPricingAdapter">
+			<allocatable identity="stream-${index}-${host}" property="Identity" type="::Media::Stream"/>
+		</adapter>
+		<property name="Identity" value="stream"/>
+        <property name="IceMX.Metrics.Debug.GroupBy" value="id"/>
+        <property name="IceMX.Metrics.Debug.Disabled" value="1"/>
+        <property name="IceMX.Metrics.ByParent.GroupBy" value="parent"/>
+        <property name="IceMX.Metrics.ByParent.Disabled" value="1"/>
+      </server>
+    </server-template>
+
+    <replica-group id="ReplicatedPricingAdapter" >
+      <load-balancing type="adaptive"/>
+	  <object identity="stream" type="::Media::Stream"/>
+    </replica-group>
+
+    <node name="node1">
+      <server-instance template="MediaServer" host="192.168.21.206" index="1"/>
+    </node>
+	<node name="node2">
+      <server-instance template="MediaServer" host="192.168.21.206" index="2"/>
+    </node>
+	<node name="node3">
+      <server-instance template="MediaServer" host="192.168.21.225" index="3"/>
+    </node>
+	<node name="node4">
+		<server-instance template="MediaServer" host="192.168.21.206" index="4"/>
+    </node>
+  </application>
+
+</icegrid>

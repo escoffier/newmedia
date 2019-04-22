@@ -1,0 +1,42 @@
+<!--
+ **********************************************************************
+
+ Copyright (c) 2003-2018 ZeroC, Inc. All rights reserved.
+
+ **********************************************************************
+-->
+
+<icegrid>
+  <application name="Simple2">
+
+    <server-template id="SimpleServer">
+      <parameter name="index"/>
+      <parameter name="host"/>
+      <parameter name="port"/>
+      <server id="SimpleServer-${index}" exe="./server" activation="on-demand">
+        <adapter name="Hello" endpoints="tcp -h ${host} -p ${port}" replica-group="ReplicatedHelloAdapter"/>
+        <property name="Identity" value="hello"/>
+
+        <property name="IceMX.Metrics.Debug.GroupBy" value="id"/>
+        <property name="IceMX.Metrics.Debug.Disabled" value="1"/>
+        <property name="IceMX.Metrics.ByParent.GroupBy" value="parent"/>
+        <property name="IceMX.Metrics.ByParent.Disabled" value="1"/>
+      </server>
+    </server-template>
+
+    <replica-group id="ReplicatedHelloAdapter">
+      <load-balancing type="round-robin"/>
+      <object identity="hello" type="::Demo::Hello"/>
+    </replica-group>
+
+    <node name="node1">
+      <server-instance template="SimpleServer" index="1" host="192.168.21.225" port="10003"/>
+    </node>
+
+    <node name="node2">
+      <server-instance template="SimpleServer" index="2" host="192.168.21.219" port="10003" />
+    </node>
+
+  </application>
+
+</icegrid>

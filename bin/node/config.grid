@@ -1,0 +1,62 @@
+#
+# The IceGrid instance name.
+#
+IceGrid.InstanceName=MediaIceGrid
+
+#
+# The IceGrid locator proxy.
+#
+Ice.Default.Locator=MediaIceGrid/Locator:default -h 192.168.21.225 -p 4061
+#
+# IceGrid registry configuration.
+#
+#IceGrid.Registry.Client.Endpoints=default -h 192.168.254.233 -p 4061
+#IceGrid.Registry.Server.Endpoints=default -h 192.168.254.233
+#IceGrid.Registry.Internal.Endpoints=default -h 192.168.254.233
+#IceGrid.Registry.LMDB.Path=db/registry
+#IceGrid.Registry.PermissionsVerifier=MediaGrid/NullPermissionsVerifier
+#IceGrid.Registry.AdminPermissionsVerifier=MediaGrid/NullPermissionsVerifier
+#IceGrid.Registry.SSLPermissionsVerifier=MediaGrid/NullSSLPermissionsVerifier
+#IceGrid.Registry.AdminSSLPermissionsVerifier=MediaGrid/NullSSLPermissionsVerifier
+
+#
+# Enable the IceGrid registry plugin from the demo to perform custom
+# load balancing for the replica group.
+#
+#Ice.Plugin.RegistryPlugin=./RegistryPlugin:createRegistryPlugin
+
+#
+# IceGrid node configuration.
+#
+
+IceGrid.Node.Name=node3
+IceGrid.Node.Endpoints=default -h 192.168.21.225
+IceGrid.Node.Data=db/node
+IceGrid.Node.CollocateRegistry=0
+
+#IceGrid.Node.Output=db
+
+#IceGrid.Node.RedirectErrToOut=1
+
+#IceGrid.Node.Name=node2
+
+#IceGrid.Node.Endpoints=default -h 192.168.180.129
+
+#IceGrid.Node.Data=db/node
+
+#IceGrid.Node.CollocateRegistry=1
+
+#IceGrid.Node.Output=db
+
+#IceGrid.Node.RedirectErrToOut=1
+
+
+
+#
+# Trace properties.
+#
+IceGrid.Node.Trace.Activator=1
+
+#IceGrid.Node.Trace.Adapter=2
+
+#IceGrid.Node.Trace.Server=3
